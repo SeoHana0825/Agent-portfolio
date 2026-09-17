@@ -1,0 +1,30 @@
+services:
+  hermes:
+    image: nousresearch/hermes-agent:latest
+    stop_grace_period: 30s
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    extra_hosts:
+      - "discord.com:162.159.128.233"
+      - "gateway.discord.gg:162.159.128.233"
+    container_name: hermes
+    restart: unless-stopped
+    command: ["gateway", "run"]
+    env_file:
+      - ~/.hermes/.env          # 실제 시크릿은 로컬 .env 파일에서만 주입
+    volumes:
+      - ~/.hermes:/opt/data
+      - /mnt/d/YourVault:/mnt/d/YourVault
+    environment:
+      - HERMES_WRITE_SAFE_ROOT=/opt/data:/mnt/d
+      - HERMES_DASHBOARD=1
+      - HERMES_UID=1000
+      - HERMES_GID=1000
+      # 아래 값들은 .env 파일로 관리 (절대 여기에 직접 입력하지 말 것)
+      # DASHSCOPE_API_KEY
+      # HERMES_DASHBOARD_BASIC_AUTH_USERNAME
+      # HERMES_DASHBOARD_BASIC_AUTH_PASSWORD
+    ports:
+      - "8642:8642"
+      - "9119:9119"

@@ -1,0 +1,21 @@
+services:
+  hermes:
+    image: nousresearch/hermes-agent:latest
+    container_name: hermes
+    restart: unless-stopped
+    env_file:
+      - ~/.hermes/.env
+    environment:
+      - HERMES_UID=1000
+      - HERMES_GID=1000
+      - HERMES_WRITE_SAFE_ROOT=/opt/data:/mnt/d
+      - HERMES_DASHBOARD=1
+    volumes:
+      - ~/.hermes:/opt/data
+      - /mnt/d/YourVault:/mnt/d/YourVault
+    stdin_open: true
+    tty: true
+    command: gateway run
+    ports:
+      - "8642:8642"
+      - "9119:9119"

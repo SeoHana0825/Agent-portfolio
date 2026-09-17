@@ -1,0 +1,162 @@
+# ========================
+# 시크릿 / 환경변수
+# ========================
+.env
+.env.*
+!.env.example
+auth.json
+install_id
+*.lock
+spawn-ledger.json
+channel_directory.json
+discord_threads.json
+
+# ========================
+# 개인 데이터 (Rule 3)
+# ========================
+home/
+StudyVault/
+memories/
+sessions/
+quiz-output/
+pairing/
+pending_messages/
+hooks/
+
+# ========================
+# 운영 상태 데이터
+# ========================
+state/
+state-snapshots/
+runtime/
+gateway/
+kanban/
+kanban.db*
+state.db*
+response_store.db*
+runs_idempotency.db*
+projects.db
+shared-state.db
+*.db
+*.db-shm
+*.db-wal
+*.db-bak*
+
+# ========================
+# 바이너리 / 캐시
+# ========================
+bin/
+.cua-driver/
+.npm/
+.local/
+.cache/
+.hermes/
+sandboxes/
+data/
+workspace/
+skins/
+platforms/
+
+# ========================
+# 빌드 / 패키지
+# ========================
+node_modules/
+venv/
+venvs/
+lazy-packages/
+hermes_agent.egg-info/
+__pycache__/
+*.pyc
+*.pyo
+
+# ========================
+# Git 객체 (대용량)
+# ========================
+hermes-agent/.git/
+
+# ========================
+# 로그 / 임시
+# ========================
+*.log
+*.tmp
+logs/
+audio_cache/
+image_cache/
+cache/
+backups/
+
+# ========================
+# 대용량 파일
+# ========================
+*.zip
+*.tar.gz
+*.tar
+*.pack
+core.*
+models_dev_cache.json
+*.etag
+
+# ========================
+# OS
+# ========================
+.DS_Store
+Thumbs.db
+
+# ========================
+# IDE
+# ========================
+.idea/
+.vscode/
+
+# ========================
+# 대용량 바이너리
+# ========================
+bin/
+.cua-driver/
+.npm/
+.local/
+home/
+
+# ========================
+# cron 실행 결과 (개인 데이터)
+# ========================
+cron/output/
+
+# ========================
+# 스냅샷 / 프로바이더 캐시
+# ========================
+.skills_prompt_snapshot.json
+models_dev_cache.json
+provider_models_cache.json
+ollama_cloud_models_cache.json
+*.etag
+
+# ========================
+# 히스토리 / 잠금파일
+# ========================
+.hermes_history
+.scratch_tip_shown
+.install_id.lock
+.backup.lock
+.gateway_state*.tmp
+.provider_models_cache*.tmp
+
+# ========================
+# 런타임 상태 파일
+# ========================
+gateway.pid
+gateway.sock
+gateway.lock
+gateway_state.json
+gateway-starts.log
+spawn-ledger.json
+channel_directory.json
+discord_threads.json
+auth.json
+auth.lock
+install_id
+*.pid
+*.sock
+cron/catch_up_occurrences
+cron/ticker_heartbeat
+cron/ticker_last_success

@@ -1,0 +1,30 @@
+#!/bin/sh
+# cs-ai-learning gateway_state.json 강제 초기화 후 백그라운드 실행
+# cont-init.d에서 실행 — 권한설정(01-hermes-setup) 완료 후 동작
+
+CS_STATE="/opt/data/profiles/cs-ai-learning/gateway_state.json"
+
+# gateway_state.json 초기화 (Discord 충돌 방지)
+if [ -f "$CS_STATE" ]; then
+    cat > "$CS_STATE" << 'JSON'
+{
+  "desired_state": "stopped",
+  "gateway_state": "stopped",
+  "platforms": {},
+  "kind": "hermes-gateway",
+  "pid": null,
+  "exit_reason": null,
+  "restart_requested": false,
+  "active_agents": 0
+}
+JSON
+    echo "[99-start-cs-gateway] gateway_state.json 초기화 완료"
+fi
+
+# hermes 유저로 cs-ai-learning 게이트웨이 백그라운드 실행
+# s6-setuidgid로 root → hermes 권한으로 실행
+echo "[99-start-cs-gateway] cs-ai-learning gateway 시작..."
+s6-setuidgid hermes nohup hermes -p cs-ai-learning gateway run \
+    > /opt/data/profiles/cs-ai-learning/logs/gateway.log 2>&1 &
+
+echo "[99-start-cs-gateway] cs-ai-learning gateway PID: $!"

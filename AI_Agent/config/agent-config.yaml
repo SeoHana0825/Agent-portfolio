@@ -1,0 +1,34 @@
+# 학습 에이전트 설정
+
+# Obsidian Vault 경로 (WSL)
+OBSIDIAN_VAULT_PATH: /mnt/d/YourVault
+
+# Obsidian Vault 경로 (Windows)
+OBSIDIAN_VAULT_PATH_WIN: D:\YourVault
+
+# 데이터 저장 경로
+DATA_PATH: /mnt/d/YourAgent/data
+
+# 스크립트 경로
+SCRIPTS_PATH: /mnt/d/YourAgent/scripts
+
+# 템플릿 경로
+TEMPLATES_PATH: /mnt/d/YourAgent/templates
+
+# 기본 설정
+DEFAULT:
+  subject: CS
+  difficulty: medium
+  quiz_count: 5
+
+# Minesync 연동
+MINESYNC:
+  enabled: true
+  vault_path: D:\YourAgent\Obsidian_Vault
+  sync_interval: 1h
+
+# 알림 설정
+NOTIFICATIONS:
+  discord: true
+  daily_report: true
+  report_time: "09:00"  # KST 기준 오전 9 시
